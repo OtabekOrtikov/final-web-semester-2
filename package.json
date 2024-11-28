@@ -1,0 +1,26 @@
+{
+  "name": "final-web-semester-2",
+  "version": "1.0.0",
+  "description": "Final Project on Web Development - JavaScript project",
+  "main": "main.js",
+  "scripts": {
+    "test": "test",
+    "compile": "sass --watch ./src/styles:./src/styles/dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OtabekOrtikov/final-web-semester-2.git"
+  },
+  "keywords": [
+    "final_project_js"
+  ],
+  "author": "Otabek Ortikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OtabekOrtikov/final-web-semester-2/issues"
+  },
+  "homepage": "https://github.com/OtabekOrtikov/final-web-semester-2#readme",
+  "dependencies": {
+    "sass": "^1.81.0"
+  }
+}
