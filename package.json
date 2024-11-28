@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "test",
-    "compile": "sass --watch src/styles/scss:src/styles/dist"
+    "compile": "sass --watch src/styles/scss/main.scss:src/styles/dist/main.css"
   },
   "repository": {
     "type": "git",

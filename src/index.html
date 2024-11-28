@@ -1,11 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/dist/main.css" />
+    <title>Dance Studio by Otabek</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div
+          class="header-inner d-flex justify-content-between align-items-center"
+        >
+          <div class="header-logo">
+            <img src="assets/logo.png" alt="Logo" />
+          </div>
+          <nav class="header-nav">
+            <ul
+              class="d-flex justify-content-between align-items-center no-list-style"
+            >
+              <li><a href="#">Home</a></li>
+              <li class="submenu"><a href="#about">About</a></li>
+              <li><a href="#schedule">Schedule</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-item active-text">
+            <h1 class="hero-item__title">Dance Studio</h1>
+            <p class="hero-item__subtitle">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+              <br />
+              nihil molestiae unde!1
+            </p>
+            <a href="#about" class="btn btn-primary">Learn More</a>
+          </div>
+          <div class="hero-item hero-item--left">
+            <h1 class="hero-item__title">Dance Studio</h1>
+            <p class="hero-item__subtitle">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+              <br />
+              nihil molestiae unde!2
+            </p>
+            <a href="#about" class="btn btn-primary">Learn More</a>
+          </div>
+          <div class="hero-item">
+            <h1 class="hero-item__title">Dance Studio</h1>
+            <p class="hero-item__subtitle">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+              <br />
+              nihil molestiae unde!3
+            </p>
+            <a href="#about" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-slide">
+        <img
+          src="assets/main-bg-1.jpg"
+          class="active-slide"
+          alt="Slide Image 1"
+        />
+        <img src="assets/main-bg-2.jpg" class="" alt="Slide Image 2" />
+        <img src="assets/main-bg-3.jpg" class="" alt="Slide Image 3" />
+      </div>
+    </section>
+
+    <script src="./js/main.js" type="module"></script>
+  </body>
 </html>
