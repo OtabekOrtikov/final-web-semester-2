@@ -3,9 +3,7 @@ const itemsPerPage = 9;
 let currentCategory = "all";
 let searchQuery = "";
 
-// Render the gallery
 export function renderGallery(galleryData, galleryContent, paginationContainer) {
-  // Filter the data based on category and search query
   const filteredData = galleryData.filter((item) => {
     const matchesCategory =
       currentCategory === "all" || item.category.toLowerCase() === currentCategory.toLowerCase();
@@ -13,21 +11,17 @@ export function renderGallery(galleryData, galleryContent, paginationContainer) 
     return matchesCategory && matchesSearch;
   });
 
-  // Handle case where no items match
   if (filteredData.length === 0) {
     galleryContent.innerHTML = "<p>No items found.</p>";
     paginationContainer.innerHTML = "";
     return;
   }
 
-  // Paginate the filtered data
   const start = (currentPage - 1) * itemsPerPage;
   const paginatedData = filteredData.slice(start, start + itemsPerPage);
 
-  // Clear existing gallery content
   galleryContent.innerHTML = "";
 
-  // Render paginated items
   paginatedData.forEach((item) => {
     const article = document.createElement("article");
     article.classList.add("gallery-content__item");
@@ -41,11 +35,9 @@ export function renderGallery(galleryData, galleryContent, paginationContainer) 
     galleryContent.appendChild(article);
   });
 
-  // Render pagination controls
   renderPagination(filteredData.length, paginationContainer, galleryData, galleryContent);
 }
 
-// Render pagination controls
 export function renderPagination(
   totalItems,
   paginationContainer,
@@ -55,7 +47,6 @@ export function renderPagination(
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   paginationContainer.innerHTML = "";
 
-  // Create the "Previous" button
   const prevButton = document.createElement("button");
   prevButton.type = "button";
   prevButton.classList.add("btn", "btn-primary");
@@ -67,7 +58,6 @@ export function renderPagination(
   });
   paginationContainer.appendChild(prevButton);
 
-  // Create the page number buttons
   for (let i = 1; i <= totalPages; i++) {
     const pageButton = document.createElement("button");
     pageButton.type = "button";
@@ -83,7 +73,6 @@ export function renderPagination(
     paginationContainer.appendChild(pageButton);
   }
 
-  // Create the "Next" button
   const nextButton = document.createElement("button");
   nextButton.type = "button";
   nextButton.classList.add("btn", "btn-primary");
@@ -96,14 +85,12 @@ export function renderPagination(
   paginationContainer.appendChild(nextButton);
 }
 
-// Update the current category for filtering
 export function updateCategory(category) {
-  currentCategory = category.toLowerCase(); // Normalize to lowercase for consistency
-  currentPage = 1; // Reset to the first page
+  currentCategory = category.toLowerCase();
+  currentPage = 1;
 }
 
-// Update the current search query for filtering
 export function updateSearch(search) {
-  searchQuery = search.toLowerCase(); // Normalize to lowercase for consistency
-  currentPage = 1; // Reset to the first page
+  searchQuery = search.toLowerCase();
+  currentPage = 1;
 }

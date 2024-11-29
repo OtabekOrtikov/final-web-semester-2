@@ -60,8 +60,8 @@
 @media screen and (width <= 768px) {
   .contact {
     &-inner {
-        padding: 0;
-        background-color: transparent;
+      padding: 0;
+      background-color: transparent;
 
       &__content {
         &-box {
@@ -74,7 +74,7 @@
             font-size: 16px;
 
             a {
-                text-wrap: wrap;
+              text-wrap: wrap;
             }
           }
         }

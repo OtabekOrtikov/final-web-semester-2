@@ -77,8 +77,9 @@ a {
   position: relative;
   margin-bottom: 30px;
 
-  &::before, &::after {
-    content: '';
+  &::before,
+  &::after {
+    content: "";
     width: 5px;
     height: 5px;
     background-color: $primary;
@@ -142,12 +143,11 @@ a {
       margin: 0 !important;
       transition: all 0.3s ease-in-out;
 
-      
       a {
         width: 100%;
         display: block;
         color: $primary;
-        
+
         &::after {
           background-color: transparent !important;
         }

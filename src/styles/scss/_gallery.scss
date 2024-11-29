@@ -131,7 +131,7 @@
         background-image: none;
         background-color: $third;
         transition: all 0.3s ease-in-out;
-        
+
         &.active {
           background-image: $gradient;
         }
@@ -139,7 +139,6 @@
         &:hover {
           background-color: $primary;
         }
-
       }
     }
   }
