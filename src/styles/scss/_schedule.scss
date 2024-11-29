@@ -21,6 +21,7 @@
                 background-color: rgba($primary, $alpha: 0.3);
             }
             th, td {
+                min-width: 200px;
                 padding: 10px 15px;
             }
             .class {
@@ -54,6 +55,7 @@
                 .schedule-table {
                     .class {
                         flex-direction: column;
+                        align-items: flex-start;
                         &-right {
                             text-align: left;
                         }

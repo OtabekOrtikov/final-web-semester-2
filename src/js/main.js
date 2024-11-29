@@ -26,3 +26,15 @@ hamburger.addEventListener("click", () => {
   menu.classList.toggle("show");
   hamburger.classList.toggle("close-burger");
 });
+
+const galleryItem = document.querySelectorAll(".gallery-content__item");
+
+galleryItem.forEach((item) => {
+  item.addEventListener("mouseenter", () => {
+    item.classList.add("show");
+  });
+
+  item.addEventListener("mouseleave", () => {
+    item.classList.remove("show");
+  });
+});
