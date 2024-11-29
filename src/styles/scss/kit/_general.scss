@@ -1,0 +1,163 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.no-list-style li {
+  list-style-type: none;
+}
+
+.btn {
+  width: auto;
+  height: auto;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 24px;
+  font-weight: 500;
+  display: inline-block;
+  text-transform: uppercase;
+  color: #fff;
+  &:hover {
+    box-shadow: 0 0 10px rgba(170, 1, 255, 0.3) inset;
+  }
+}
+
+.btn-primary {
+  background-image: $gradient;
+  transition: all 0.3s ease-in-out;
+}
+
+.title {
+  font-size: 58px;
+  letter-spacing: 5px;
+  color: $primary;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Imperial Script", cursive;
+}
+
+.divider {
+  max-width: 220px;
+  width: 100%;
+  height: 2px;
+  background-color: $primary;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 30px;
+  &::before, &::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background-color: $primary;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    transform: translateY(-30%) rotate(45deg);
+  }
+  &::after {
+    right: -1px;
+    left: auto;
+  }
+}
+
+.submenu {
+  position: relative;
+  width: auto;
+  height: auto;
+
+  &-btn {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::after {
+      display: none !important;
+    }
+    i::before {
+      transition: all 0.3s ease-in-out;
+    }
+
+    &.active-submenu {
+      i::before {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-list {
+    position: absolute;
+    top: 120%;
+    left: -40%;
+    z-index: 999;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease-in-out;
+    transform: scale(0);
+    transform-origin: top;
+    &.show {
+      transform: scale(1);
+    }
+    li {
+      padding: 10px 20px;
+      margin: 0 !important;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background-color: $primary;
+        a {
+          color: #fff !important;
+        }
+      }
+      a {
+        width: 100%;
+        display: block;
+        color: $primary;
+        &::after {
+          background-color: transparent !important;
+        }
+      }
+      &:last-child {
+        border-radius: 0 0 10px 10px;
+      }
+      &:first-child {
+        border-radius: 10px 10px 0 0;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    &-btn {
+      i::before {
+        display: none;
+      }
+    }
+    &-list {
+      position: static;
+      transform: scale(1);
+      margin-top: 10px;
+      box-shadow: none;
+    }
+  }
+}

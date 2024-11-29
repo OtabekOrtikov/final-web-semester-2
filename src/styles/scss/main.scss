@@ -1,61 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=Lavishly+Yours&display=swap');
 @import "kit/variables";
+@import "kit/fontello";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "Montserrat", sans-serif;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.justify-content-between {
-  justify-content: space-between;
-}
-
-.align-items-center {
-  align-items: center;
-}
-
-.no-list-style li {
-  list-style-type: none;
-}
-
-.btn {
-    width: auto;
-    height: auto;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 30px;
-    font-size: 24px;
-    font-weight: 500;
-    display: inline-block;
-    text-transform: uppercase;
-    color: #fff;
-    &:hover {
-        box-shadow: 0 0 10px rgba(170, 1, 255, 0.3) inset;
-    }
-}
-.btn-primary {
-    background-image: $gradient;
-    transition: all 0.3s ease-in-out;
-}
+@import "kit/general";
 
 @import "header";
 @import "hero";
+@import "about";
