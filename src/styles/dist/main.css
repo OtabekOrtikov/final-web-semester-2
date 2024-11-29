@@ -572,7 +572,7 @@ a {
 .gallery-inner .filter-search input {
   padding: 10px 15px;
   width: 100%;
-  border-radius: 15px 0 0 15px;
+  border-radius: 15px 5px 5px 15px;
   border: 1px solid #ccc;
   font-size: 16px;
   font-weight: 500;
@@ -619,6 +619,11 @@ a {
   overflow: hidden;
   border-radius: 25px;
   transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width: 810px) {
+  .gallery-inner .gallery-content__item {
+    max-width: 100%;
+  }
 }
 .gallery-inner .gallery-content__item:hover {
   border-radius: 15px;
