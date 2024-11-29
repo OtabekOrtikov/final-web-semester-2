@@ -1,27 +1,33 @@
 .header {
   padding: 25px 0;
   border-bottom: 2px solid $secondary;
+
   &-inner {
     padding: 0 15px;
   }
+
   &-logo {
     max-width: 150px;
     width: 100%;
     height: auto;
+
     img {
       width: 100%;
       height: auto;
     }
   }
+
   &-nav {
     ul {
       li {
         margin: 0 10px;
+
         a {
           font-size: 18px;
           font-weight: 500;
           transition: all 0.3s ease-in-out;
           color: #000;
+
           &::after {
             content: "";
             width: 100%;
@@ -31,8 +37,10 @@
             transform: scaleX(0);
             transition: all 0.3s ease-in-out;
           }
+
           &:hover {
             color: $primary;
+
             &::after {
               transform: scaleX(1);
             }
@@ -41,30 +49,34 @@
       }
     }
   }
+
   &-hamburger {
     padding: 10px;
     height: auto;
-    display: flex;
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
     align-items: center;
     gap: 5px;
     display: none;
+
     div {
       width: 25px;
       height: 3px;
       background-color: $primary;
       transition: all 0.3s ease-in-out;
     }
+
     &.close-burger {
       div {
         &:nth-child(1) {
           transform: rotate(45deg) translate(6px, 6px);
         }
+
         &:nth-child(2) {
           opacity: 0;
         }
+
         &:nth-child(3) {
           transform: rotate(-45deg) translate(5px, -5px);
         }
@@ -73,11 +85,12 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
   .header {
     &-inner {
       position: relative;
     }
+
     &-nav {
       position: absolute;
       top: 100%;
@@ -90,23 +103,28 @@
       transition: all 0.3s ease-in-out;
       transform: scaleY(0);
       transform-origin: top;
+
       ul {
         display: flex;
         flex-direction: column;
+
         li {
           margin: 10px 0;
           width: 100%;
           text-align: center;
+
           a {
             font-size: 24px;
           }
         }
       }
+
       &.show {
         height: auto;
         transform: scaleY(1);
       }
     }
+
     &-hamburger {
       display: flex;
     }

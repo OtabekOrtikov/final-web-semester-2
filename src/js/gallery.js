@@ -60,7 +60,7 @@ export function renderPagination(
   prevButton.type = "button";
   prevButton.classList.add("btn", "btn-primary");
   prevButton.disabled = currentPage === 1;
-  prevButton.innerHTML = `<i class="icon-arrow-left"></i>`;
+  prevButton.innerHTML = "<i class=\"icon-arrow-left\"></i>";
   prevButton.addEventListener("click", () => {
     currentPage--;
     renderGallery(galleryData, galleryContent, paginationContainer);
@@ -71,7 +71,7 @@ export function renderPagination(
   for (let i = 1; i <= totalPages; i++) {
     const pageButton = document.createElement("button");
     pageButton.type = "button";
-    pageButton.classList.add("btn", "btn-primary");
+    pageButton.classList.add("pagination-btn", "btn-primary");
     if (i === currentPage) {
       pageButton.classList.add("active");
     }
@@ -88,7 +88,7 @@ export function renderPagination(
   nextButton.type = "button";
   nextButton.classList.add("btn", "btn-primary");
   nextButton.disabled = currentPage === totalPages;
-  nextButton.innerHTML = `<i class="icon-arrow-right"></i>`;
+  nextButton.innerHTML = "<i class=\"icon-arrow-right\"></i>";
   nextButton.addEventListener("click", () => {
     currentPage++;
     renderGallery(galleryData, galleryContent, paginationContainer);

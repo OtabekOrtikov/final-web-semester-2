@@ -33,7 +33,7 @@ export async function renderSchedule(data) {
       });
     });
 
-    timeSlot.forEach((slot, index) => {
+    timeSlot.forEach((slot) => {
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${slot[0]?.time || ""}</td>

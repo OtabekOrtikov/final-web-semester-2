@@ -48,8 +48,9 @@ a {
   text-transform: uppercase;
   cursor: pointer;
   color: #fff;
+
   &:hover {
-    box-shadow: 0 0 10px rgba(170, 1, 255, 0.3) inset;
+    box-shadow: 0 0 10px rgb(170 1 255 / 30%) inset;
   }
 }
 
@@ -75,6 +76,7 @@ a {
   margin: 0 auto;
   position: relative;
   margin-bottom: 30px;
+
   &::before, &::after {
     content: '';
     width: 5px;
@@ -86,6 +88,7 @@ a {
     left: -1px;
     transform: translateY(-30%) rotate(45deg);
   }
+
   &::after {
     right: -1px;
     left: auto;
@@ -102,9 +105,11 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+
     &::after {
       display: none !important;
     }
+
     i::before {
       transition: all 0.3s ease-in-out;
     }
@@ -123,45 +128,56 @@ a {
     z-index: 999;
     border-radius: 10px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgb(0 0 0 / 30%);
     transition: all 0.5s ease-in-out;
     transform: scale(0);
     transform-origin: top;
+
     &.show {
       transform: scale(1);
     }
+
     li {
       padding: 10px 20px;
       margin: 0 !important;
       transition: all 0.3s ease-in-out;
-      &:hover {
-        background-color: $primary;
-        a {
-          color: #fff !important;
-        }
-      }
+
+      
       a {
         width: 100%;
         display: block;
         color: $primary;
+        
         &::after {
           background-color: transparent !important;
         }
       }
+
+      &:hover {
+        background-color: $primary;
+
+        a {
+          color: #fff !important;
+        }
+      }
+
       &:last-child {
         border-radius: 0 0 10px 10px;
       }
+
       &:first-child {
         border-radius: 10px 10px 0 0;
       }
     }
   }
-  @media screen and (max-width: 768px) {
+
+  @media screen and (width <= 768px) {
     &-btn {
       i::before {
         display: none;
       }
     }
+
     &-list {
       position: static;
       transform: scale(1);
