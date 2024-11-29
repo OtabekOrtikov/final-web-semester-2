@@ -33,19 +33,6 @@ if (menu && hamburger) {
   });
 }
 
-// Gallery item hover functionality
-const galleryItems = document.querySelectorAll(".gallery-content__item");
-
-galleryItems.forEach((item) => {
-  item.addEventListener("mouseenter", () => {
-    item.classList.add("show");
-  });
-
-  item.addEventListener("mouseleave", () => {
-    item.classList.remove("show");
-  });
-});
-
 // Fetch and render schedule
 (async () => {
   const scheduleData = await fetchSchedule();
@@ -66,18 +53,28 @@ const searchInput = document.querySelector(".filter-search input");
     return;
   }
 
+  // Initial render of the gallery
   renderGallery(galleryData, galleryContent, paginationContainer);
 
+  // Category filter buttons
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      // Remove active class from all buttons
       filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+      // Add active class to the clicked button
       button.classList.add("active");
-      const category = button.textContent === "All" ? "all" : button.textContent;
+
+      // Set the category
+      const category = button.textContent === "All" ? "all" : button.textContent.trim();
       updateCategory(category);
+
+      // Re-render the gallery
       renderGallery(galleryData, galleryContent, paginationContainer);
     });
   });
 
+  // Search functionality
   searchInput.addEventListener("input", (e) => {
     updateSearch(e.target.value);
     renderGallery(galleryData, galleryContent, paginationContainer);
