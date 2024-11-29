@@ -56,7 +56,8 @@ const searchInput = document.querySelector(".filter-search input");
 
       button.classList.add("active");
 
-      const category = button.textContent === "All" ? "all" : button.textContent.trim();
+      const category =
+        button.textContent === "All" ? "all" : button.textContent.trim();
       updateCategory(category);
 
       renderGallery(galleryData, galleryContent, paginationContainer);

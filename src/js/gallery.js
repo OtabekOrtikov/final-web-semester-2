@@ -49,7 +49,7 @@ export function renderPagination(
 
   const prevButton = document.createElement("button");
   prevButton.type = "button";
-  prevButton.classList.add("btn", "btn-primary");
+  prevButton.classList.add("pagination-btn", "btn-primary");
   prevButton.disabled = currentPage === 1;
   prevButton.innerHTML = "<i class=\"icon-arrow-left\"></i>";
   prevButton.addEventListener("click", () => {
@@ -75,7 +75,7 @@ export function renderPagination(
 
   const nextButton = document.createElement("button");
   nextButton.type = "button";
-  nextButton.classList.add("btn", "btn-primary");
+  nextButton.classList.add("pagination-btn", "btn-primary");
   nextButton.disabled = currentPage === totalPages;
   nextButton.innerHTML = "<i class=\"icon-arrow-right\"></i>";
   nextButton.addEventListener("click", () => {
