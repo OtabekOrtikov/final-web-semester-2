@@ -1,0 +1,118 @@
+{
+  "gallery": [
+    {
+      "id": 1,
+      "title": "Hip Hop by Otabek",
+      "category": "Hip-Hop",
+      "image": "/src/assets/hip-hop-1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Hip Hop by Jony",
+      "category": "Hip-Hop",
+      "image": "/src/assets/hip-hop-2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Hip Hop by Avaz",
+      "category": "Hip-Hop",
+      "image": "/src/assets/hip-hop-3.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Hip Hop by Yahyo",
+      "category": "Hip-Hop",
+      "image": "/src/assets/hip-hop-4.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Rock n Roll by Vais",
+      "category": "Rock n roll",
+      "image": "/src/assets/rock-n-roll-1.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Rock n Roll by Sarboz",
+      "category": "Rock n roll",
+      "image": "/src/assets/rock-n-roll-2.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Rock n Roll by David",
+      "category": "Rock n roll",
+      "image": "/src/assets/rock-n-roll-3.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Ballet by Shahnoza",
+      "category": "Ballet",
+      "image": "/src/assets/ballet-1.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Ballet by Feruza",
+      "category": "Ballet",
+      "image": "/src/assets/ballet-2.jpg"
+    },
+    {
+      "id": 10,
+      "title": "Ballet by Shakhzodakhon",
+      "category": "Ballet",
+      "image": "/src/assets/ballet-3.jpg"
+    },
+    {
+      "id": 11,
+      "title": "Salsa by Nigora",
+      "category": "Salsa",
+      "image": "/src/assets/salsa-1.jpg"
+    },
+    {
+      "id": 12,
+      "title": "Salsa by Aziza",
+      "category": "Salsa",
+      "image": "/src/assets/salsa-2.jpg"
+    },
+    {
+      "id": 13,
+      "title": "Salsa by Sevinch",
+      "category": "Salsa",
+      "image": "/src/assets/salsa-3.jpg"
+    },
+    {
+      "id": 14,
+      "title": "Salsa by Shahzoda",
+      "category": "Salsa",
+      "image": "/src/assets/salsa-4.jpg"
+    },
+    {
+      "id": 15,
+      "title": "Break Dance by Risul",
+      "category": "Break Dance",
+      "image": "/src/assets/break-1.jpeg"
+    },
+    {
+      "id": 16,
+      "title": "Break Dance by Ravshan",
+      "category": "Break Dance",
+      "image": "/src/assets/break-2.jpg"
+    },
+    {
+      "id": 17,
+      "title": "Break Dance by Yahyo",
+      "category": "Break Dance",
+      "image": "/src/assets/break-3.jpg"
+    },
+    {
+      "id": 18,
+      "title": "Break Dance by Avaz",
+      "category": "Break Dance",
+      "image": "/src/assets/break-4.jpg"
+    },
+    {
+      "id": 19,
+      "title": "Break Dance by Otabek",
+      "category": "Break Dance",
+      "image": "/src/assets/break-5.jpg"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "schedule": [
+    {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "halls": [
+        {
+          "hallNumber": "1",
+          "classes": [
+            {
+              "time": "17:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            },
+            {
+              "time": "18:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            },
+            {
+              "time": "19:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            }
+          ]
+        },
+        {
+          "hallNumber": "2",
+          "classes": [
+            {
+              "time": "17:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            },
+            {
+              "time": "18:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            },
+            {
+              "time": "19:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            }
+          ]
+        },
+        {
+          "hallNumber": "3",
+          "classes": [
+            {
+              "time": "17:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            },
+            {
+              "time": "18:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            },
+            {
+              "time": "19:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "days": ["Tuesday", "Thursday", "Saturday"],
+      "halls": [
+        {
+          "hallNumber": "1",
+          "classes": [
+            {
+              "time": "19:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            }
+          ]
+        },
+        {
+          "hallNumber": "2",
+          "classes": [
+            {
+              "time": "19:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            }
+          ]
+        },
+        {
+          "hallNumber": "3",
+          "classes": [
+            {
+              "time": "19:00",
+              "className": "Class 1",
+              "teacher": "Teacher 1",
+              "totalPlaces": 20,
+              "availablePlaces": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

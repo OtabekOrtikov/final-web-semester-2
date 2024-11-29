@@ -21,6 +21,10 @@
                     text-transform: none;
                     display: block;
                     text-wrap: nowrap;
+                    background-color: rgba($primary, 0.5);
+                    &.active, &:hover {
+                        background-image: $gradient;
+                    }
                 }
             }
             &-search {
@@ -81,6 +85,9 @@
                 transition: all 0.3s ease-in-out;
                 &:hover {
                     border-radius: 15px;
+                    .gallery-content__item-caption {
+                        bottom: 0;
+                    }
                 }
                 img {
                     width: 100%;
@@ -102,11 +109,6 @@
                     padding: 10px 15px;
                     transition: all 0.5s ease;
                     cursor: default;
-                }
-                &.show {
-                    .gallery-content__item-caption {
-                        bottom: 0;
-                    }
                 }
             }
         }

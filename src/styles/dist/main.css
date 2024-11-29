@@ -557,6 +557,10 @@ a {
   text-transform: none;
   display: block;
   text-wrap: nowrap;
+  background-color: rgba(143, 99, 131, 0.5);
+}
+.gallery-inner .filter-btns .btn.active, .gallery-inner .filter-btns .btn:hover {
+  background-image: linear-gradient(#BE79AA, #CD8FBA);
 }
 .gallery-inner .filter-search {
   display: flex;
@@ -618,6 +622,9 @@ a {
 .gallery-inner .gallery-content__item:hover {
   border-radius: 15px;
 }
+.gallery-inner .gallery-content__item:hover .gallery-content__item-caption {
+  bottom: 0;
+}
 .gallery-inner .gallery-content__item img {
   width: 100%;
   height: 100%;
@@ -638,9 +645,6 @@ a {
   padding: 10px 15px;
   transition: all 0.5s ease;
   cursor: default;
-}
-.gallery-inner .gallery-content__item.show .gallery-content__item-caption {
-  bottom: 0;
 }
 .gallery-inner .gallery-pagination {
   gap: 5px;

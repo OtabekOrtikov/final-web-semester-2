@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/OtabekOrtikov/final-web-semester-2#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
     "sass": "^1.81.0"
   }
 }
