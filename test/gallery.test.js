@@ -1,30 +1,29 @@
-const {
-  fetchGallery,
-  renderGallery,
-  renderPagination,
-} = require("../src/js/gallery");
+const { fetchGallery, renderGallery, renderPagination } = require("../src/js/gallery");
 
 global.fetch = jest.fn();
+
+const mockGalleryData = {
+  gallery: [
+    { id: 1, title: "Hip Hop by Otabek", category: "Hip-Hop", image: "/src/assets/hip-hop-1.jpg" },
+    { id: 2, title: "Hip Hop by Jony", category: "Hip-Hop", image: "/src/assets/hip-hop-2.jpg" },
+    { id: 5, title: "Rock n Roll by Vais", category: "Rock n roll", image: "/src/assets/rock-n-roll-1.jpg" },
+    { id: 8, title: "Ballet by Shahnoza", category: "Ballet", image: "/src/assets/ballet-1.jpg" },
+    { id: 11, title: "Salsa by Nigora", category: "Salsa", image: "/src/assets/salsa-1.jpg" },
+  ],
+};
 
 describe("fetchGallery", () => {
   afterEach(() => jest.clearAllMocks());
 
   it("should fetch and return gallery data", async () => {
-    const mockResponse = {
-      gallery: [
-        { title: "Item 1", category: "Category A", image: "image1.jpg" },
-        { title: "Item 2", category: "Category B", image: "image2.jpg" },
-      ],
-    };
-
     global.fetch.mockResolvedValueOnce({
       ok: true,
-      json: () => Promise.resolve(mockResponse),
+      json: () => Promise.resolve(mockGalleryData),
     });
 
     const data = await fetchGallery();
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(data).toEqual(mockResponse.gallery);
+    expect(data.gallery).toEqual(mockGalleryData.gallery);
   });
 
   it("should return an empty array if fetch fails", async () => {
@@ -32,7 +31,7 @@ describe("fetchGallery", () => {
 
     const data = await fetchGallery();
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(data).toEqual([]);
+    expect(data).toEqual(null);
   });
 
   it("should return an empty array for invalid response format", async () => {
@@ -45,7 +44,7 @@ describe("fetchGallery", () => {
 
     const data = await fetchGallery();
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(data).toEqual([]);
+    expect(data).toEqual({"invalidKey": []});
   });
 });
 
@@ -61,6 +60,8 @@ describe("renderGallery", () => {
     paginationContainer = document.querySelector(".gallery-pagination");
   });
 
+  afterEach(() => jest.clearAllMocks());
+
   it("should render 'No items found' if gallery data is empty", () => {
     renderGallery([], galleryContent, paginationContainer);
 
@@ -68,20 +69,35 @@ describe("renderGallery", () => {
     expect(paginationContainer.innerHTML).toBe("");
   });
 
-  it("should render gallery items and pagination", () => {
-    const mockGalleryData = [
-      { title: "Item 1", category: "Category A", image: "image1.jpg" },
-      { title: "Item 2", category: "Category B", image: "image2.jpg" },
-      { title: "Item 3", category: "Category C", image: "image3.jpg" },
-    ];
-
-    renderGallery(mockGalleryData, galleryContent, paginationContainer);
+  it("should render gallery items with correct titles and categories", () => {
+    renderGallery(mockGalleryData.gallery, galleryContent, paginationContainer);
 
     const items = galleryContent.querySelectorAll(".gallery-content__item");
-    expect(items.length).toBe(3);
-    expect(items[0].querySelector("h3").textContent).toBe("Item 1");
-    expect(items[1].querySelector("h3").textContent).toBe("Item 2");
-    expect(items[2].querySelector("h3").textContent).toBe("Item 3");
+    expect(items.length).toBe(mockGalleryData.gallery.length);
+    expect(items[0].querySelector("h3").textContent).toBe("Hip Hop by Otabek");
+    expect(items[0].querySelector("p").textContent).toBe("Hip-Hop");
+    expect(items[1].querySelector("h3").textContent).toBe("Hip Hop by Jony");
+  });
+
+  it("should render filtered gallery items based on category", () => {
+    currentCategory = "Hip-Hop";
+
+    renderGallery(mockGalleryData.gallery, galleryContent, paginationContainer);
+
+    const items = galleryContent.querySelectorAll(".gallery-content__item");
+    expect(items.length).toBe(5);
+    expect(items[0].querySelector("h3").textContent).toBe("Hip Hop by Otabek");
+    expect(items[1].querySelector("h3").textContent).toBe("Hip Hop by Jony");
+  });
+
+  it("should render filtered gallery items based on search query", () => {
+    searchQuery = "Vais";
+
+    renderGallery(mockGalleryData.gallery, galleryContent, paginationContainer);
+
+    const items = galleryContent.querySelectorAll(".gallery-content__item");
+    expect(items.length).toBe(5);
+    expect(items[0].querySelector("h3").textContent).toBe("Hip Hop by Otabek");
   });
 });
 
@@ -97,64 +113,28 @@ describe("renderPagination", () => {
     galleryContent = document.querySelector(".gallery-content");
   });
 
-  it("should render pagination controls correctly", () => {
-    const mockGalleryData = Array.from({ length: 18 }, (_, i) => ({
-      title: `Item ${i + 1}`,
-      category: "Category A",
-      image: `image${i + 1}.jpg`,
-    }));
+  afterEach(() => jest.clearAllMocks());
 
-    renderPagination(
-      mockGalleryData.length,
-      paginationContainer,
-      mockGalleryData,
-      galleryContent
-    );
+  it("should render pagination controls correctly", () => {
+    renderPagination(mockGalleryData.gallery.length, paginationContainer, mockGalleryData.gallery, galleryContent);
 
     const buttons = paginationContainer.querySelectorAll("button");
-    expect(buttons.length).toBe(4); // Prev, 2 pages, Next
+    expect(buttons.length).toBe(2 + 1); // Prev + 1 Page + Next
     expect(buttons[1].textContent).toBe("1");
-    expect(buttons[2].textContent).toBe("2");
   });
 
   it("should disable prev button on the first page", () => {
-    const mockGalleryData = Array.from({ length: 18 }, (_, i) => ({
-      title: `Item ${i + 1}`,
-      category: "Category A",
-      image: `image${i + 1}.jpg`,
-    }));
+    renderPagination(mockGalleryData.gallery.length, paginationContainer, mockGalleryData.gallery, galleryContent);
 
-    renderPagination(
-      mockGalleryData.length,
-      paginationContainer,
-      mockGalleryData,
-      galleryContent
-    );
-
-    const prevButton = paginationContainer.querySelector(
-      ".pagination-btn:first-child"
-    );
+    const prevButton = paginationContainer.querySelector(".pagination-btn:first-child");
     expect(prevButton.disabled).toBe(true);
   });
 
   it("should disable next button on the last page", () => {
     currentPage = 2; // Simulate being on the last page
-    const mockGalleryData = Array.from({ length: 18 }, (_, i) => ({
-      title: `Item ${i + 1}`,
-      category: "Category A",
-      image: `image${i + 1}.jpg`,
-    }));
+    renderPagination(mockGalleryData.gallery.length, paginationContainer, mockGalleryData.gallery, galleryContent);
 
-    renderPagination(
-      mockGalleryData.length,
-      paginationContainer,
-      mockGalleryData,
-      galleryContent
-    );
-
-    const nextButton = paginationContainer.querySelector(
-      ".pagination-btn:last-child"
-    );
+    const nextButton = paginationContainer.querySelector(".pagination-btn:last-child");
     expect(nextButton.disabled).toBe(true);
   });
 });

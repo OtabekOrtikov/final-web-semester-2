@@ -1,93 +1,16 @@
 async function fetchGallery() {
-  try {
-    const response = await fetch("http://127.0.0.1:3000/gallery");
-    if (!response.ok) {
-      throw new Error("Network response was not ok " + response.statusText);
+    try {
+      const response = await fetch("http://127.0.0.1:3000/gallery");
+      if (!response.ok) {
+        throw new Error("Network response was not ok " + response.statusText);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("There has been a problem with your fetch operation:", error);
+      return null;
     }
-
-    const data = await response.json();
-    if (!data || !Array.isArray(data.gallery)) {
-      throw new Error("Gallery data is not in the expected format");
-    }
-
-    return data.gallery;
-  } catch (error) {
-    console.error("There has been a problem with your fetch operation:", error);
-    return [];
   }
-}
-async function renderSchedule(data) {
-  const table = document.querySelector("#schedule-table");
-
-  if (!data) {
-    table.innerHTML = "<tr><td colspan='4'>No data found</td></tr>";
-    return;
-  }
-
-  data.schedule.forEach((item) => {
-    const headerRow = document.createElement("tr");
-    headerRow.classList.add("schedule-table__header");
-    headerRow.innerHTML = `
-          <th>Start time</th>
-          <th colspan="3">${item.days.join(" / ")}</th>
-        `;
-    table.appendChild(headerRow);
-
-    const hallRow = document.createElement("tr");
-    hallRow.classList.add("schedule-table__title");
-    hallRow.innerHTML = `
-          <td></td>
-          <td>Hall 1</td>
-          <td>Hall 2</td>
-          <td>Hall 3</td>
-        `;
-    table.appendChild(hallRow);
-
-    const timeSlot = [];
-    item.halls.forEach((hall) => {
-      hall.classes.forEach((classItem, index) => {
-        if (!timeSlot[index]) timeSlot[index] = [];
-        timeSlot[index].push(classItem);
-      });
-    });
-
-    timeSlot.forEach((slot) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-            <td>${slot[0]?.time || ""}</td>
-            ${[0, 1, 2]
-              .map((hallIndex) => {
-                const classData = slot[hallIndex];
-                if (classData) {
-                  return `
-                    <td>
-                        <div class="class">
-                        <div class="class-left">
-                            <p>${classData.className}</p>
-                            <p>${classData.teacher}</p>
-                        </div>
-                        <div class="class-right">
-                            <p>${classData.totalPlaces}</p>
-                            <p>${classData.availablePlaces} availabe</p>
-                        </div>
-                        </div>
-                    </td>
-                  `;
-                } else {
-                  return "<td></td>";
-                }
-              })
-              .join("")}  
-          `;
-      table.appendChild(row);
-    });
-  });
-}
-
-(async () => {
-  const scheduleData = await fetchSchedule();
-  await renderSchedule(scheduleData);
-})();
 
 let currentPage = 1;
 const itemsPerPage = 9;
@@ -228,3 +151,6 @@ const searchInput = document.querySelector(".filter-search input");
     renderGallery(galleryData, galleryContent, paginationContainer);
   });
 })();
+
+
+module.exports = { fetchGallery, renderGallery, renderPagination };
