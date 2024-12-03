@@ -62,10 +62,10 @@ async function renderSchedule(data) {
       row.innerHTML = `
           <td>${slot[0]?.time || ""}</td>
           ${[0, 1, 2]
-            .map((hallIndex) => {
-              const classData = slot[hallIndex];
-              if (classData) {
-                return `
+    .map((hallIndex) => {
+      const classData = slot[hallIndex];
+      if (classData) {
+        return `
                   <td>
                     <div class="class">
                       <div class="class-left">
@@ -79,11 +79,11 @@ async function renderSchedule(data) {
                     </div>
                   </td>
                 `;
-              } else {
-                return "<td></td>";
-              }
-            })
-            .join("")}
+      } else {
+        return "<td></td>";
+      }
+    })
+    .join("")}
         `;
       table.appendChild(row);
     });
@@ -94,5 +94,3 @@ async function renderSchedule(data) {
   const scheduleData = await fetchSchedule();
   await renderSchedule(scheduleData);
 })();
-
-module.exports = { renderSchedule, fetchSchedule };

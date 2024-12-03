@@ -9,6 +9,7 @@ module.exports = [
       semi: ["error", "always"],
       quotes: ["error", "double"],
       "no-unused-vars": "warn",
+      "indent": ["error", 2],
     },
   },
 ];

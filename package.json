@@ -8,7 +8,7 @@
     "compile": "sass --watch src/styles/scss/main.scss:src/styles/dist/main.css",
     "build": "sass src/styles/scss/main.scss:src/styles/dist/main.css --style=compressed",
     "lint:js": "eslint src/js",
-    "lint:scss": "stylelint \"src/styles/scss/**/*.scss\" --fix",
+    "lint:scss": "stylelint \"src/styles/scss/**/*.scss\"",
     "lint": "npm run lint:js && npm run lint:scss",
     "format": "prettier --write \"src/**/*.{js,scss}\""
   },

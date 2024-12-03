@@ -1,16 +1,16 @@
 async function fetchGallery() {
-    try {
-      const response = await fetch("http://127.0.0.1:3000/gallery");
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("There has been a problem with your fetch operation:", error);
-      return null;
+  try {
+    const response = await fetch("http://127.0.0.1:3000/gallery");
+    if (!response.ok) {
+      throw new Error("Network response was not ok " + response.statusText);
     }
+    const data = await response.json();
+    return data.gallery;
+  } catch (error) {
+    console.error("There has been a problem with your fetch operation:", error);
+    return null;
   }
+}
 
 let currentPage = 1;
 const itemsPerPage = 9;
@@ -73,7 +73,7 @@ function renderPagination(
   prevButton.type = "button";
   prevButton.classList.add("pagination-btn", "btn-primary");
   prevButton.disabled = currentPage === 1;
-  prevButton.innerHTML = '<i class="icon-arrow-left"></i>';
+  prevButton.innerHTML = "<i class=\"icon-arrow-left\"></i>";
   prevButton.addEventListener("click", () => {
     currentPage--;
     renderGallery(galleryData, galleryContent, paginationContainer);
@@ -99,7 +99,7 @@ function renderPagination(
   nextButton.type = "button";
   nextButton.classList.add("pagination-btn", "btn-primary");
   nextButton.disabled = currentPage === totalPages;
-  nextButton.innerHTML = '<i class="icon-arrow-right"></i>';
+  nextButton.innerHTML = "<i class=\"icon-arrow-right\"></i>";
   nextButton.addEventListener("click", () => {
     currentPage++;
     renderGallery(galleryData, galleryContent, paginationContainer);
@@ -151,6 +151,3 @@ const searchInput = document.querySelector(".filter-search input");
     renderGallery(galleryData, galleryContent, paginationContainer);
   });
 })();
-
-
-module.exports = { fetchGallery, renderGallery, renderPagination };
