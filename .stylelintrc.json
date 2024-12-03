@@ -1,9 +1,1 @@
-{
-    "extends": "stylelint-config-standard-scss",
-    "rules": {
-      "indentation": 2,
-      "no-empty-source": null,
-      "color-hex-length": "short"
-    }
-  }
-  
+{  "extends": "stylelint-config-standard",  "rules": {    "indentation": 2  }}

@@ -8,7 +8,7 @@
     "compile": "sass --watch src/styles/scss/main.scss:src/styles/dist/main.css",
     "build": "sass src/styles/scss/main.scss:src/styles/dist/main.css --style=compressed",
     "lint:js": "eslint src/js",
-    "lint:scss": "stylelint \"src/styles/scss/**/*.scss\"",
+    "lint:scss": "stylelint \"src/styles/scss/**/*.scss\" --fix",
     "lint": "npm run lint:js && npm run lint:scss",
     "format": "prettier --write \"src/**/*.{js,scss}\""
   },
@@ -36,8 +36,11 @@
     "eslint": "^9.15.0",
     "globals": "^15.12.0",
     "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "node-fetch": "^3.3.2",
     "prettier": "^3.0.0",
     "stylelint": "^16.11.0",
+    "stylelint-config-standard": "^36.0.1",
     "stylelint-scss": "^6.10.0"
   }
 }
