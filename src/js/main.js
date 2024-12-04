@@ -50,3 +50,47 @@ if (menu && hamburger) {
     hamburger.classList.toggle("close-burger");
   });
 }
+
+import { fetchGallery, renderGallery, updateCategory, updateSearch } from "./gallery.js";
+
+const galleryContent = document.querySelector(".gallery-content");
+const paginationContainer = document.querySelector(".gallery-pagination");
+const filterButtons = document.querySelectorAll(".filter-btns .btn");
+const searchInput = document.querySelector(".filter-search input");
+
+(async () => {
+  const galleryData = await fetchGallery();
+
+  if (!Array.isArray(galleryData)) {
+    console.error("Gallery data is not an array:", galleryData);
+    return;
+  }
+
+  renderGallery(galleryData, galleryContent, paginationContainer);
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+      button.classList.add("active");
+
+      const category =
+        button.textContent === "All" ? "all" : button.textContent.trim();
+      updateCategory(category);
+
+      renderGallery(galleryData, galleryContent, paginationContainer);
+    });
+  });
+
+  searchInput.addEventListener("input", (e) => {
+    updateSearch(e.target.value);
+    renderGallery(galleryData, galleryContent, paginationContainer);
+  });
+})();
+
+import { fetchSchedule, renderSchedule } from "./schedule.js";
+
+(async () => {
+  const scheduleData = await fetchSchedule();
+  await renderSchedule(scheduleData);
+})();

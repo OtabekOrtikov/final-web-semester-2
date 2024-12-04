@@ -1,4 +1,22 @@
 module.exports = {
-  moduleFileExtensions: ['js', 'mjs', 'cjs', 'jsx', 'ts', 'tsx', 'json', 'node'],
-  testEnvironment: 'jsdom', // Add this line to use the jsdom environment
+  roots: [
+    "./src",
+    "./test",
+  ],
+  moduleFileExtensions: [
+    "js",
+    "html",
+    "htm",
+    "css",
+  ],
+  reporters: ["default"],
+  transform: {
+    "^.+\\.js$": "babel-jest",
+  },
+  clearMocks: true,
+  coverageProvider: "v8",
+  coverageReporters: [
+    "json-summary",
+  ],
+  testEnvironment: "jest-environment-jsdom",
 };

@@ -1,10 +1,15 @@
-async function fetchGallery() {
+// gallery.js
+
+export async function fetchGallery() {
   try {
     const response = await fetch("http://127.0.0.1:3000/gallery");
     if (!response.ok) {
       throw new Error("Network response was not ok " + response.statusText);
     }
     const data = await response.json();
+    if (!Array.isArray(data.gallery)) {
+      throw new Error("Invalid data format");
+    }
     return data.gallery;
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
@@ -17,7 +22,7 @@ const itemsPerPage = 9;
 let currentCategory = "all";
 let searchQuery = "";
 
-function renderGallery(galleryData, galleryContent, paginationContainer) {
+export function renderGallery(galleryData, galleryContent, paginationContainer) {
   const filteredData = galleryData.filter((item) => {
     const matchesCategory =
       currentCategory === "all" ||
@@ -43,12 +48,12 @@ function renderGallery(galleryData, galleryContent, paginationContainer) {
     const article = document.createElement("article");
     article.classList.add("gallery-content__item");
     article.innerHTML = `
-        <img src="${item.image}" alt="${item.title}">
-        <div class="gallery-content__item-caption">
-          <h3>${item.title}</h3>
-          <p>${item.category}</p>
-        </div>
-      `;
+      <img src="${item.image}" alt="${item.title}">
+      <div class="gallery-content__item-caption">
+        <h3>${item.title}</h3>
+        <p>${item.category}</p>
+      </div>
+    `;
     galleryContent.appendChild(article);
   });
 
@@ -60,7 +65,7 @@ function renderGallery(galleryData, galleryContent, paginationContainer) {
   );
 }
 
-function renderPagination(
+export function renderPagination(
   totalItems,
   paginationContainer,
   galleryData,
@@ -107,47 +112,22 @@ function renderPagination(
   paginationContainer.appendChild(nextButton);
 }
 
-function updateCategory(category) {
+export function updateCategory(category) {
   currentCategory = category.toLowerCase();
   currentPage = 1;
 }
 
-function updateSearch(search) {
+export function updateSearch(search) {
   searchQuery = search.toLowerCase();
   currentPage = 1;
 }
 
-const galleryContent = document.querySelector(".gallery-content");
-const paginationContainer = document.querySelector(".gallery-pagination");
-const filterButtons = document.querySelectorAll(".filter-btns .btn");
-const searchInput = document.querySelector(".filter-search input");
+export function resetFilters() {
+  currentCategory = "all";
+  searchQuery = "";
+  currentPage = 1;
+}
 
-(async () => {
-  const galleryData = await fetchGallery();
-
-  if (!Array.isArray(galleryData)) {
-    console.error("Gallery data is not an array:", galleryData);
-    return;
-  }
-
-  renderGallery(galleryData, galleryContent, paginationContainer);
-
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-
-      button.classList.add("active");
-
-      const category =
-        button.textContent === "All" ? "all" : button.textContent.trim();
-      updateCategory(category);
-
-      renderGallery(galleryData, galleryContent, paginationContainer);
-    });
-  });
-
-  searchInput.addEventListener("input", (e) => {
-    updateSearch(e.target.value);
-    renderGallery(galleryData, galleryContent, paginationContainer);
-  });
-})();
+export function setCurrentPage(page) {
+  currentPage = page;
+}

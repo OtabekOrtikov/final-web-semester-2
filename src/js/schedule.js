@@ -1,4 +1,4 @@
-async function fetchSchedule() {
+export async function fetchSchedule() {
   try {
     const response = await fetch("http://127.0.0.1:3000/schedule");
     if (!response.ok) {
@@ -12,7 +12,7 @@ async function fetchSchedule() {
   }
 }
 
-async function renderSchedule(data) {
+export async function renderSchedule(data) {
   const table = document.querySelector("#schedule-table");
 
   if (!table) {
@@ -89,8 +89,3 @@ async function renderSchedule(data) {
     });
   });
 }
-
-(async () => {
-  const scheduleData = await fetchSchedule();
-  await renderSchedule(scheduleData);
-})();

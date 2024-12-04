@@ -1,14 +1,52 @@
-const { fetchGallery, renderGallery, renderPagination } = require("../src/js/gallery");
+import {
+  fetchGallery,
+  renderGallery,
+  renderPagination,
+} from "../src/js/gallery";
+
+test("fetchGallery returns data", async () => {
+  const data = await fetchGallery();
+  expect(data).toBeDefined();
+});
+
+let currentCategory = "all";
+let searchQuery = "";
+let currentPage = 1;
 
 global.fetch = jest.fn();
 
 const mockGalleryData = {
   gallery: [
-    { id: 1, title: "Hip Hop by Otabek", category: "Hip-Hop", image: "/src/assets/hip-hop-1.jpg" },
-    { id: 2, title: "Hip Hop by Jony", category: "Hip-Hop", image: "/src/assets/hip-hop-2.jpg" },
-    { id: 5, title: "Rock n Roll by Vais", category: "Rock n roll", image: "/src/assets/rock-n-roll-1.jpg" },
-    { id: 8, title: "Ballet by Shahnoza", category: "Ballet", image: "/src/assets/ballet-1.jpg" },
-    { id: 11, title: "Salsa by Nigora", category: "Salsa", image: "/src/assets/salsa-1.jpg" },
+    {
+      id: 1,
+      title: "Hip Hop by Otabek",
+      category: "Hip-Hop",
+      image: "/src/assets/hip-hop-1.jpg",
+    },
+    {
+      id: 2,
+      title: "Hip Hop by Jony",
+      category: "Hip-Hop",
+      image: "/src/assets/hip-hop-2.jpg",
+    },
+    {
+      id: 5,
+      title: "Rock n Roll by Vais",
+      category: "Rock n roll",
+      image: "/src/assets/rock-n-roll-1.jpg",
+    },
+    {
+      id: 8,
+      title: "Ballet by Shahnoza",
+      category: "Ballet",
+      image: "/src/assets/ballet-1.jpg",
+    },
+    {
+      id: 11,
+      title: "Salsa by Nigora",
+      category: "Salsa",
+      image: "/src/assets/salsa-1.jpg",
+    },
   ],
 };
 
@@ -23,7 +61,7 @@ describe("fetchGallery", () => {
 
     const data = await fetchGallery();
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(data.gallery).toEqual(mockGalleryData.gallery);
+    expect(data).toEqual(mockGalleryData.gallery);
   });
 
   it("should return an empty array if fetch fails", async () => {
@@ -44,7 +82,7 @@ describe("fetchGallery", () => {
 
     const data = await fetchGallery();
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(data).toEqual({"invalidKey": []});
+    expect(data).toEqual(null);
   });
 });
 
@@ -116,7 +154,12 @@ describe("renderPagination", () => {
   afterEach(() => jest.clearAllMocks());
 
   it("should render pagination controls correctly", () => {
-    renderPagination(mockGalleryData.gallery.length, paginationContainer, mockGalleryData.gallery, galleryContent);
+    renderPagination(
+      mockGalleryData.gallery.length,
+      paginationContainer,
+      mockGalleryData.gallery,
+      galleryContent
+    );
 
     const buttons = paginationContainer.querySelectorAll("button");
     expect(buttons.length).toBe(2 + 1); // Prev + 1 Page + Next
@@ -124,17 +167,31 @@ describe("renderPagination", () => {
   });
 
   it("should disable prev button on the first page", () => {
-    renderPagination(mockGalleryData.gallery.length, paginationContainer, mockGalleryData.gallery, galleryContent);
+    renderPagination(
+      mockGalleryData.gallery.length,
+      paginationContainer,
+      mockGalleryData.gallery,
+      galleryContent
+    );
 
-    const prevButton = paginationContainer.querySelector(".pagination-btn:first-child");
+    const prevButton = paginationContainer.querySelector(
+      ".pagination-btn:first-child"
+    );
     expect(prevButton.disabled).toBe(true);
   });
 
   it("should disable next button on the last page", () => {
     currentPage = 2; // Simulate being on the last page
-    renderPagination(mockGalleryData.gallery.length, paginationContainer, mockGalleryData.gallery, galleryContent);
+    renderPagination(
+      mockGalleryData.gallery.length,
+      paginationContainer,
+      mockGalleryData.gallery,
+      galleryContent
+    );
 
-    const nextButton = paginationContainer.querySelector(".pagination-btn:last-child");
+    const nextButton = paginationContainer.querySelector(
+      ".pagination-btn:last-child"
+    );
     expect(nextButton.disabled).toBe(true);
   });
 });
