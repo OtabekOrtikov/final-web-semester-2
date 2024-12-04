@@ -161,6 +161,16 @@ a {
   left: auto;
 }
 
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
 .submenu {
   position: relative;
   width: auto;

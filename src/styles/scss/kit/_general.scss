@@ -96,6 +96,13 @@ a {
   }
 }
 
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
 .submenu {
   position: relative;
   width: auto;

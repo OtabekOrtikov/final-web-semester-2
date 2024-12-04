@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Imperial+Script&family=Lavishly+Yours&display=swap");
-@import url("kit/variables");
-@import url("kit/fontello");
-@import url("kit/general");
-@import url("header");
-@import url("hero");
-@import url("about");
-@import url("schedule");
-@import url("gallery");
-@import url("contact");
+@import "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Imperial+Script&family=Lavishly+Yours&display=swap";
+@import "kit/variables";
+@import "kit/fontello";
+@import "kit/general";
+@import "header";
+@import "hero";
+@import "about";
+@import "schedule";
+@import "gallery";
+@import "contact";
 
 * {
   margin: 0;
